@@ -140,9 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="Interpolasi_Kuadratik.h" />
     <ClInclude Include="Interpolasi_Linear.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Interpolasi_Kuadratik.cpp" />
     <ClCompile Include="Interpolasi_Linear.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>

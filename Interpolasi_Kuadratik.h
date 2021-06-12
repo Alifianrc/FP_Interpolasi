@@ -2,9 +2,9 @@
 #include "Coordinate.h"
 #include <iostream>
 
-class Linear {
+class Kuadratik {
 private:
-	Coordinate zero, one;
+	Coordinate zero, one, two;
 	float x;
 	float result;
 
@@ -14,14 +14,17 @@ private:
 	void PrintCoord(Coordinate coord);
 
 public:
-	Linear() = default;
-	Linear(Coordinate value0, Coordinate value1, float valueX);
+	Kuadratik() = default;
+	Kuadratik(Coordinate value0, Coordinate value1, Coordinate value2, float valueX);
 
 	void SetZero(Coordinate temp);
 	Coordinate GetZero();
 
 	void SetOne(Coordinate temp);
 	Coordinate GetOne();
+
+	void SetTwo(Coordinate temp);
+	Coordinate GetTwo();
 
 	void SetX(float val);
 	float GetX();
