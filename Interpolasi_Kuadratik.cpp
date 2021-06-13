@@ -1,40 +1,18 @@
 #include "Interpolasi_Kuadratik.h"
 
-Kuadratik::Kuadratik(Coordinate value0, Coordinate value1, Coordinate value2, float valueX) {
-	zero.x = value0.x;
-	zero.y = value0.y;
+Kuadratik::Kuadratik(Coordinate zero, Coordinate one, Coordinate two, float x) {
+	coord[0] = zero;
+	coord[1] = one;
+	coord[2] = two;
 
-	one.x = value1.x;
-	one.y = value1.y;
-
-	two.x = value2.x;
-	two.y = value2.y;
-
-	x = valueX;
+	this->x = x;
 }
 
-void Kuadratik::SetZero(Coordinate temp) {
-	zero.x = temp.x;
-	zero.y = temp.y;
+void Kuadratik::SetCoord(int order, Coordinate val) {
+	coord[order] = val;
 }
-Coordinate Kuadratik::GetZero() {
-	return zero;
-}
-
-void Kuadratik::SetOne(Coordinate temp) {
-	one.x = temp.x;
-	one.y = temp.y;
-}
-Coordinate Kuadratik::GetOne() {
-	return one;
-}
-
-void Kuadratik::SetTwo(Coordinate temp) {
-	two.x = temp.x;
-	two.y = temp.y;
-}
-Coordinate Kuadratik::GetTwo() {
-	return two;
+Coordinate Kuadratik::GetCoord(int order) {
+	return coord[order];
 }
 
 void Kuadratik::SetX(float val) {
@@ -49,30 +27,30 @@ void Kuadratik::ShowResult() {
 
 	std::cout << "\n   Hasil perhitungan Interpolasi Kuadratik ";
 	std::cout << "untuk x = " << x << " dan titik ";
-	PrintCoord(zero);
+	PrintCoord(coord[0]);
 	std::cout << " ";
-	PrintCoord(one);
+	PrintCoord(coord[1]);
 	std::cout << " ";
-	PrintCoord(two);
+	PrintCoord(coord[2]);
 	std::cout << "  :\n";
 	std::cout << "   y = " << result << "\n";
 }
 
 void Kuadratik::Calculate() {
 	// b0 = y0
-	float b0 = zero.y;
+	float b0 = coord[0].y;
 
 	// b1 = (y1 - y0)/(x1 - x0)
-	float b1 = (one.y - zero.y) / (one.x - zero.x);
+	float b1 = (coord[1].y - coord[0].y) / (coord[1].x - coord[0].x);
 
 	// c1 = (y2 - y1)/(x2 - x1)
-	float c1 = (two.y - one.y) / (two.x - one.x);
+	float c1 = (coord[2].y - coord[1].y) / (coord[2].x - coord[1].x);
 
 	// b2 = (c1 - b1)/(x2 - x0)
-	float b2 = (c1 - b1) / (two.x - zero.x);
+	float b2 = (c1 - b1) / (coord[2].x - coord[0].x);
 
 	// y = b0 + b1 * (x - x0) + b2 * (x - x0) * (x - x1)
-	result = b0 + b1 * (x - zero.x) + b2 * (x - zero.x) * (x - one.x);
+	result = b0 + b1 * (x - coord[0].x) + b2 * (x - coord[0].x) * (x - coord[1].x);
 }
 
 void Kuadratik::PrintCoord(Coordinate coord) {

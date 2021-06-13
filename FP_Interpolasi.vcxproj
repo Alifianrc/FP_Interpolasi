@@ -140,11 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="Interpolasi.h" />
+    <ClInclude Include="Interpolasi_Beda-Terbagi-Newton.h" />
     <ClInclude Include="Interpolasi_Kuadratik.h" />
+    <ClInclude Include="Interpolasi_Lagrange.h" />
     <ClInclude Include="Interpolasi_Linear.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Interpolasi.cpp" />
+    <ClCompile Include="Interpolasi_Beda-Terbagi-Newton.cpp" />
     <ClCompile Include="Interpolasi_Kuadratik.cpp" />
+    <ClCompile Include="Interpolasi_Lagrange.cpp" />
     <ClCompile Include="Interpolasi_Linear.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>

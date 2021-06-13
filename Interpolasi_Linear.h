@@ -4,7 +4,7 @@
 
 class Linear {
 private:
-	Coordinate zero, one;
+	Coordinate coord[2];
 	float x;
 	float result;
 
@@ -15,13 +15,10 @@ private:
 
 public:
 	Linear() = default;
-	Linear(Coordinate value0, Coordinate value1, float valueX);
+	Linear(Coordinate zero, Coordinate one, float x);
 
-	void SetZero(Coordinate temp);
-	Coordinate GetZero();
-
-	void SetOne(Coordinate temp);
-	Coordinate GetOne();
+	void SetCoord(int order, Coordinate val);
+	Coordinate GetCoord(int order);
 
 	void SetX(float val);
 	float GetX();

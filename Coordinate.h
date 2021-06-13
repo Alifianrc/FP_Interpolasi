@@ -9,4 +9,9 @@ struct Coordinate
 	}
 
 	Coordinate() = default;
+
+	Coordinate(Coordinate& temp) {
+		this->x = temp.x;
+		this->y = temp.y;
+	}
 };
