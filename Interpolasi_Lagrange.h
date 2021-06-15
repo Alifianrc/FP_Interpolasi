@@ -19,6 +19,7 @@ private:
 public:
 	Lagrange() = default;
 	Lagrange(int total, float x);
+	~Lagrange();
 
 	void SetCoordAmount(int total);
 	int GetCoordAmount();

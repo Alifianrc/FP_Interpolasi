@@ -1,6 +1,7 @@
 #include "Interpolasi_Kuadratik.h"
 
 Kuadratik::Kuadratik(Coordinate zero, Coordinate one, Coordinate two, float x) {
+	result = 0;
 	coord[0] = zero;
 	coord[1] = one;
 	coord[2] = two;

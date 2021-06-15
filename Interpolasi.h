@@ -1,5 +1,9 @@
 #pragma once
-#include "Coordinate.h";
+#include "Coordinate.h"
+#include "Interpolasi_Linear.h"
+#include "Interpolasi_Kuadratik.h"
+#include "Interpolasi_Beda-Terbagi-Newton.h"
+#include "Interpolasi_Lagrange.h"
 
 class Interpolasi {
 public:

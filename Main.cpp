@@ -1,28 +1,113 @@
-#include "Interpolasi_Linear.h"
-#include "Interpolasi_Kuadratik.h"
-#include "Interpolasi_Beda-Terbagi-Newton.h"
-#include "Interpolasi_Lagrange.h"
-#include <list>
+#include "Interpolasi.h"
+#include <vector>
+
+void InputProcess(std::vector<Coordinate*>& vect, short c_amount)
+{
+	for (short i = 0; i < c_amount; i++)
+	{
+		std::cout << "Input koordinat " << i + 1 << ":\n";
+		std::cout << "x: ";
+		float x = 0;
+		std::cin >> x;
+		std::cout << "y: ";
+		float y = 0;
+		std::cin >> y;
+		vect.push_back(new Coordinate(x, y));
+	}
+}
 
 int main() {
-	// EXAMPLE MAIN
+	/* Initialization */
+	std::cout << "Initializing...\n";
+	bool running = true;
+	std::vector<Coordinate*> coordinates;
 
-	Coordinate zero(1, 3), one(4, 5), two(7, 9), three(10, 16);
+	/* Running loop */
+	while (running)
+	{
+		system("cls");
+		std::cout << "Pilih aksi:\n1. Interpolasi Linear\n2. Interpolasi Kuadratik\n3. Interpolasi Beda Newton\n4. Interpolasi Lagrange\nMasukkan karakter selain 1..4 untuk keluar dari program\nPilihan: ";
+		char input;
+		std::cin >> input;
+		if (input > 48 && input < 53)
+		{
+			float x = 0;
+			switch (input)
+			{
+				/* Interp Linear */
+			case 49:
+				system("cls");
+				std::cout << "=== Interpolasi Linear ===\n";
+				InputProcess(coordinates, 2);
+				std::cout << "Masukkan nilai x yang ingin dicari: ";
+				std::cin >> x;
+				Linear lin(*coordinates[0], *coordinates[1], x);
+				lin.ShowResult();
+				for (short i = 0; i < coordinates.size(); i++)
+				{
+					delete coordinates[i];
+				}
+				coordinates.clear();
+				system("pause");
+				break;
 
-	Linear linear(zero, one, 5);
-	linear.ShowResult();
+				/* Interp Kuadratik */
+			case 50:
+				system("cls");
+				std::cout << "=== Interpolasi Kuadratik ===\n";
+				InputProcess(coordinates, 3);
+				std::cout << "Masukkan nilai x yang ingin dicari: ";
+				std::cin >> x;
+				Kuadratik kuad(*coordinates[0], *coordinates[1], *coordinates[2], x);
+				kuad.ShowResult();
+				for (short i = 0; i < coordinates.size(); i++)
+				{
+					delete coordinates[i];
+				}
+				coordinates.clear();
+				system("pause");
+				break;
 
-	Kuadratik kuadratik(zero, one, two, 5);
-	kuadratik.ShowResult();
+				/* Interp BedaNewton*/
+			case 51:
+				system("cls");
+				std::cout << "=== Interpolasi Kuadratik ===\n";
+				InputProcess(coordinates, 4);
+				std::cout << "Masukkan nilai x yang ingin dicari: ";
+				std::cin >> x;
+				BedaNewton bd(*coordinates[0], *coordinates[1], *coordinates[2], *coordinates[3], x);
+				bd.ShowResult();
+				for (short i = 0; i < coordinates.size(); i++)
+				{
+					delete coordinates[i];
+				}
+				coordinates.clear();
+				system("pause");
+				break;
 
-	BedaNewton newton(zero, one, two, three, 5);
-	newton.ShowResult();
-
-	Lagrange lagrange(3, 5);
-	lagrange.SetCoord(0, zero);
-	lagrange.SetCoord(1, one);
-	lagrange.SetCoord(2, two);
-	lagrange.ShowResult();
-
+				/* Interp Lagrange */
+			case 52:
+				system("cls");
+				std::cout << "=== Interpolasi Lagrange ===\n";
+				short amount;
+				std::cout << "Masukkan jumlah titik: ";
+				std::cin >> amount;
+				InputProcess(coordinates, amount);
+				std::cout << "Masukkan nilai x yang ingin dicari: ";
+				std::cin >> x;
+				Lagrange lag(amount, x);
+				for (short i = 0; i < amount; i++)
+				{
+					lag.SetCoord(i, *coordinates[i]);
+					delete coordinates[i];
+				}
+				lag.ShowResult();
+				coordinates.clear();
+				system("pause");
+				break;
+			}
+		}
+		else running = false;
+	}
 	return 0;
 }

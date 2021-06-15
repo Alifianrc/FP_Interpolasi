@@ -1,11 +1,16 @@
 #include "Interpolasi_Lagrange.h"
 
 Lagrange::Lagrange(int total, float x) {
+	result = 0;
 	coord = new Coordinate[total];
 	coordAmount = total;
 	L = new float[total];
 
 	this->x = x;
+}
+Lagrange::~Lagrange() {
+	delete coord;
+	delete L;
 }
 
 void Lagrange::SetCoordAmount(int total) {

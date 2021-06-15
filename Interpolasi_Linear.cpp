@@ -1,6 +1,7 @@
 #include "Interpolasi_Linear.h"
 
 Linear::Linear(Coordinate zero, Coordinate one, float x) {
+	result = 0;
 	coord[0] = zero;
 	coord[1] = one;
 
