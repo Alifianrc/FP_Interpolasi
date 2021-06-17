@@ -24,5 +24,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Contact
 Mohammad Alifian - alifianrc@gmail.com
-Aydin Ihsan - 
+
+Aydin Ihsan - d.leo037.study@gmail.com
 
